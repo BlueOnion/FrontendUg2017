@@ -1,4 +1,17 @@
  <div>
   <h2>Peyote parzysty</h2>
   <p>Aby obliczyć wielkość swojej pracy podaj poniższe parametry:</p>
+  <p>Podaj ilość koralików w poziomie:</p>
+  
+  <form [formGroup]="myForm" (ngSubmit)="mySubmit(myForm.value)">
+
+    <input type="text" [formControl]="horizontal">
+    <p>Podaj ilość koralików w pionie:</p>
+	<div *ngIf="horizontal.hasError('bolekValue')">Bolek is denied</div>
+    
+    <input type="text" [formControl]="myForm.controls['vertical']"> <br>
+	<br>
+    <button type="submit">POLICZ</button>
+
+</form>
 </div> 
