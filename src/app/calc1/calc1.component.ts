@@ -12,6 +12,7 @@ export class Calc1Component implements OnInit {
   myForm: FormGroup;
 
   horizontal: AbstractControl;
+  result: number;
 
   constructor(fb: FormBuilder) {
 
@@ -25,11 +26,24 @@ export class Calc1Component implements OnInit {
          Validators.minLength(1),
         this.myHorizontalValidator])]
     });
+this.horizontal = this.myForm.controls['horizontal'];
 
-    this.horizontal = this.myForm.controls['horizontal'];
-
-    this.horizontal.valueChanges.subscribe(horizontal => console.log('First name set to ' + horizontal));
-    this.myForm.controls['vertical'].valueChanges.subscribe(name => console.log('Last name set to ' + name));
+    
+this.horizontal.valueChanges.subscribe(horizontal => console.log('First name set to ' + horizontal));
+    
+this.myForm.controls['vertical'].valueChanges.subscribe(
+        
+	name => {
+            
+		console.log('Last name set to ' + name);
+            
+		this.result = name*10;
+        
+		}
+    
+);
+	
+	
   }
 
   ngOnInit() {
