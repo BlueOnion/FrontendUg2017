@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { Calc1Component } from './calc1/calc1.component';
+import { Calc1Service } from './calc1/calc1.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { Calc1Component } from './calc1/calc1.component';
 	ReactiveFormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [Calc1Service],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
