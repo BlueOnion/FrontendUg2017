@@ -7,7 +7,6 @@ import { Beads } from './beads';
   selector: 'app-calc1',
   templateUrl: './calc1.component.html',
   styleUrls: ['./calc1.component.css'],
-  //providers: [Calc1Service]
 })
 
 export class Calc1Component implements OnInit {
@@ -16,25 +15,27 @@ export class Calc1Component implements OnInit {
   bead_type: Beads;
   resultHeight: number;
   resultWidth: number;
-  tmp: Beads;
+  numHeight: number;
+  numWidth: number;
   
 //-------------------konstruktor--------------------------------------
   constructor(private calc1Service : Calc1Service) {
 
 	this.bead_type = { name: 'Toho 11/0', height: 2, width: 2};
+	this.resultHeight = 0;
+	this.resultWidth = 0;
   }
-
+//--------------------------------------------------------------------
+  
   ngOnInit() {
 	
 	this.beads = this.calc1Service.getTypes();
-		
-	//this.countSize(this.bead_type);
   }
 
   countSize(bead) {
 	
-	
-	//console.log("wartosc: ", this.resultHeight);
+	this.resultHeight = this.numHeight * this.bead_type.height;
+	this.resultWidth = this.numWidth * this.bead_type.width;
   }
   
 }
