@@ -1,64 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, AbstractControl, Validators } from '@angular/forms';
+import { Calc1Service } from './calc1.service';
+import { Beads } from './beads';
 
 @Component({
   selector: 'app-calc1',
   templateUrl: './calc1.component.html',
-  styleUrls: ['./calc1.component.css']
+  styleUrls: ['./calc1.component.css'],
+  //providers: [Calc1Service]
 })
 
 export class Calc1Component implements OnInit {
 
-  myForm: FormGroup;
+  beads: Beads[];
+  bead_type: Beads;
+  resultHeight: number;
+  resultWidth: number;
+  tmp: Beads;
+  
+//-------------------konstruktor--------------------------------------
+  constructor(private calc1Service : Calc1Service) {
 
-  horizontal: AbstractControl;
-  result: number;
-
-  constructor(fb: FormBuilder) {
-
-    this.myForm = fb.group({
-      'horizontal': ['', Validators.compose(
-        [Validators.required,
-         Validators.minLength(1),
-        this.myHorizontalValidator])],
-      'vertical': ['', Validators.compose(
-        [Validators.required,
-         Validators.minLength(1),
-        this.myHorizontalValidator])]
-    });
-this.horizontal = this.myForm.controls['horizontal'];
-
-    
-this.horizontal.valueChanges.subscribe(horizontal => console.log('First name set to ' + horizontal));
-    
-this.myForm.controls['vertical'].valueChanges.subscribe(
-        
-	name => {
-            
-		console.log('Last name set to ' + name);
-            
-		this.result = name*10;
-        
-		}
-    
-);
-	
-	
+	this.bead_type = { name: 'Toho 11/0', height: 2, width: 2};
   }
 
   ngOnInit() {
+	
+	this.beads = this.calc1Service.getTypes();
+		
+	//this.countSize(this.bead_type);
   }
 
-  mySubmit(value: any) {
-    console.log(value);
+  countSize(bead) {
+	
+	
+	//console.log("wartosc: ", this.resultHeight);
   }
-
-  myHorizontalValidator(control: FormControl) {
-    if (control.value.match(/^Bo/i)) {
-      return {
-        'bolekValue': true
-      };
-    }
-  }
-
+  
 }

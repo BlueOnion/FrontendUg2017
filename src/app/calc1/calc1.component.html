@@ -1,20 +1,28 @@
  <div class="panel panel-success">
   <div class="panel-heading">Peyote parzysty</div>
   <div class="panel-body">
+  
+  <p>Wybierz rodzaj koralików:</p>
+
+  <select class="form-control" name="bead_type" [(ngModel)]="bead_type" required>
+    <option *ngFor="let bead of beads" [ngValue]="bead">{{bead.name}}</option>
+  </select>
+
+  <button (click)="hideElement = !hideElement">POKAŻ/UKRYJ SZCZEGÓŁY</button>
+    <div *ngIf="hideElement">
+      <p>Wymiary koralika to: {{bead_type.height}} x {{bead_type.width}} mm </p>
+    </div>
+  
+  <br>
+  <br>
   <p>Aby obliczyć wielkość swojej pracy podaj poniższe parametry:</p>
   <p>Podaj ilość koralików w poziomie:</p>
   
-  <form [formGroup]="myForm" (ngSubmit)="mySubmit(myForm.value)">
-
-    <input type="text" [formControl]="horizontal">
 	<br>
 	<br>
     <p>Podaj ilość koralików w pionie:</p>
-	<div *ngIf="horizontal.hasError('bolekValue')">Bolek is denied</div>
-    
-    <input type="text" [formControl]="myForm.controls['vertical']"> <br>
-	<br>
-    <button type="submit">POLICZ</button><p>{{result}}</p>
-</form>
+
+    <button (click)="countSize()">POLICZ</button>
+	  <p>{{result}}</p> 
 </div>
 </div> 
