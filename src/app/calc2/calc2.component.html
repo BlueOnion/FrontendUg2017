@@ -1,0 +1,43 @@
+<div class="nav">
+    <a [routerLink]="['/peyotep']">Peyote parzysty</a>
+    <a [routerLink]="['/peyoten']">Peyote nieparzysty</a>
+	<a [routerLink]="['/beadcrochet']">Sznur szydełkowo-koralikowy</a>
+</div>
+ 
+ <div class="panel panel-success">
+  <div class="panel-heading">Peyote nieparzysty</div>
+  <div class="panel-body">
+  
+  <p>Wybierz rodzaj koralików:</p>
+  <p>(Bez podania typu aplikacja domyślnie użyje Toho 11/0 :))</p>
+
+  <select class="form-control" name="bead_type" [(ngModel)]="bead_type" required>
+    <option *ngFor="let bead of beads" [ngValue]="bead">{{bead.name}}</option>
+  </select>
+
+  <button (click)="hideElement = !hideElement">POKAŻ/UKRYJ SZCZEGÓŁY</button>
+    <div *ngIf="hideElement">
+      <p>Wymiary koralika to: {{bead_type.height}} x {{bead_type.width}} mm </p>
+    </div>
+  
+  <br>
+  <br>
+  
+  <p>Aby obliczyć wielkość swojej pracy podaj poniższe parametry:</p>
+  <p>Podaj ilość koralików w poziomie:</p>
+  <input type="number" [(ngModel)]="numHeight"> 
+  <br>
+  <br>
+  <p>Podaj ilość koralików w pionie:</p>
+  <input type="number" [(ngModel)]="numWidth">
+  <br>
+  
+  <br>
+  <button (click)="countSize()">POLICZ</button>
+  <br>
+  <br>
+	<p>Wielkość Twojej pracy to: {{resultHeight}} mm w pionie
+	   i {{resultWidth}} mm w poziomie</p> 
+	
+</div>
+</div> 
