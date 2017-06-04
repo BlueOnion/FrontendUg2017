@@ -34,8 +34,21 @@ export class Calc3Component implements OnInit {
 
   countSize(bead) {
 	
-	this.resultHeight = this.numHeight * this.bead_type.height;
-	this.resultWidth = this.numWidth * this.bead_type.width + this.bead_type.width;
+	if(this.bead_type.name == 'Toho 11/0') {
+		this.resultHeight = (7 * this.numWidth)/6;
+		this.resultWidth = this.numHeight * this.bead_type.height;
+	}
+	
+	if(this.bead_type.name == 'Toho 15/0') {
+		this.resultHeight = (5 * this.numWidth)/6;
+		this.resultWidth = this.numHeight * this.bead_type.height;		
+	}
+	
+	else if(this.bead_type.name == 'Toho Treasure') {
+		this.resultHeight = (4 * this.numWidth)/6;
+		this.resultWidth = this.numHeight * this.bead_type.height;		
+	}
+	
   }
   
 }

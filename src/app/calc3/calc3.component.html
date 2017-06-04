@@ -25,19 +25,19 @@
   
   <p>Aby obliczyć wielkość swojej pracy podaj poniższe parametry:</p>
   <p>Podaj ilość koralików w rzędzie:</p>
-  <input type="number" [(ngModel)]="numHeight"> 
+  <input type="number" [(ngModel)]="numWidth"> 
   <br>
   <br>
   <p>Podaj ilość rzędów:</p>
-  <input type="number" [(ngModel)]="numWidth">
+  <input type="number" [(ngModel)]="numHeight">
   <br>
   
   <br>
   <button (click)="countSize()">POLICZ</button>
   <br>
   <br>
-	<p>Wielkość Twojej pracy to: {{resultHeight}} mm w pionie
-	   i {{resultWidth}} mm w poziomie</p> 
+	<p>Wielkość Twojej pracy to: {{resultHeight}} mm średnicy
+	   i {{resultWidth}} mm długości</p> 
 	
 </div>
 </div> 
