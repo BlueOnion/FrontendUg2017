@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, AbstractControl, Validators } from '@angular/forms';
-import { Calc1Service } from './calc1.service';
-import { Beads } from './beads';
+import { Calc1Service } from '../calc1.service';
+import { Beads } from '../beads';
 
 @Component({
   selector: 'app-calc1',
