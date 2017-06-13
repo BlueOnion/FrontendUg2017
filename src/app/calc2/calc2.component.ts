@@ -17,21 +17,29 @@ export class Calc2Component implements OnInit {
   resultWidth: number;
   numHeight: number;
   numWidth: number;
-  
+  ownHeight: number;
+  ownWidth: number;
+  ownBead: Beads[];
 //-------------------konstruktor--------------------------------------
   constructor(private calc2Service : Calc1Service) {
 
 	this.bead_type = { name: 'Toho 11/0', height: 2, width: 2};
 	this.resultHeight = 0;
 	this.resultWidth = 0;
+	this.beads = this.calc2Service.getTypes();
   }
 //--------------------------------------------------------------------
   
   ngOnInit() {
 	
-	this.beads = this.calc2Service.getTypes();
   }
-
+  
+  addOwnBead(ownHeight, ownWidth){
+	
+	this.calc2Service.add({ name: "Twój koralik", height: this.ownHeight, width: this.ownWidth});
+	this.beads = this.calc2Service.getTypes();
+	console.log(this.ownHeight)
+  }
   countSize(bead) {
 	
 	this.resultHeight = this.numHeight * this.bead_type.height;

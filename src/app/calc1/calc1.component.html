@@ -8,9 +8,19 @@
   <div class="panel-heading">Peyote parzysty</div>
   <div class="panel-body">
   
-  <p>Wybierz rodzaj koralików:</p>
+  <p>Podaj wymiary swoich koralików:</p>
+    <button (click)="Element = !Element">DODAJ WŁASNY KORALIK</button>
+    <div *ngIf="Element">
+	  <p> Podaj wysokosć:     Podaj szerokość:</p>
+      <input type="number" placeholder="0.1" step="0.01" min="0.1" [(ngModel)]="ownHeight">
+	  <input type="number" placeholder="0.1" step="0.01" min="0.1" [(ngModel)]="ownWidth">
+	  <button (click)="addOwnBead()">DODAJ</button>
+    </div>
+	
+  <br>
+  <p>Lub wybierz rodzaj z listy poniżej:</p>
   <p>(Bez podania typu aplikacja domyślnie użyje Toho 11/0 :))</p>
-
+  
   <select class="form-control" name="bead_type" [(ngModel)]="bead_type" required>
     <option *ngFor="let bead of beads" [ngValue]="bead">{{bead.name}}</option>
   </select>
@@ -19,17 +29,16 @@
     <div *ngIf="hideElement">
       <p>Wymiary koralika to: {{bead_type.height}} x {{bead_type.width}} mm </p>
     </div>
-  
   <br>
   <br>
   
   <p>Aby obliczyć wielkość swojej pracy podaj poniższe parametry:</p>
   <p>Podaj ilość koralików w poziomie:</p>
-  <input type="number" [(ngModel)]="numHeight"> 
+  <input type="number" step="1" min="1"[(ngModel)]="numHeight"> 
   <br>
   <br>
   <p>Podaj ilość koralików w pionie:</p>
-  <input type="number" [(ngModel)]="numWidth">
+  <input type="number" step="1" min="1"[(ngModel)]="numWidth">
   <br>
   
   <br>
